@@ -1,7 +1,29 @@
 'use strict'
 
+import fs from 'fs'
+
+const fileName = './tasks.json'
+
+// 同期的にファイルから復元
+const load = fileName => {
+  try {
+    const data = fs.readFileSync(fileName, 'utf8')
+    return new  Map(JSON.parse(data))
+  } catch(ignore) {
+    console.log(`${fileName}から復元できませんでした`)
+    return new Map()
+  }
+}
+
 // key: タスクの文字列 value: 完了しているかどうかの真偽値
-const tasks = new Map()
+const tasks = load(fileName)
+
+/**
+ * タスクをファイルに保存する
+ */
+const saveTasks = () => {
+  fs.writeFileSync(fileName, JSON.stringify(Array.from(tasks)), 'utf8')
+}
 
 /**
  * TODOを追加する
@@ -9,6 +31,7 @@ const tasks = new Map()
  */
 export const todo = task => {
   tasks.set(task, false)
+  saveTasks()
 }
 
 /**
@@ -38,6 +61,7 @@ export const list = () => Array.from(tasks).filter(isNotDone).map(e => e[0])
 export const done = task => {
   if(tasks.has(task)) {
     tasks.set(task, true)
+    saveTasks()
   }
 }
 
@@ -53,4 +77,5 @@ export const donelist = () => Array.from(tasks).filter(isDone).map(e => e[0])
  */
 export const del = task => {
   tasks.delete(task)
+  saveTasks()
 }

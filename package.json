@@ -13,6 +13,7 @@
     "build": "babel src -d lib",
     "test": "babel-node src/test.js",
     "exec": "babel-node src/app.js",
+    "repl": "babel-node",
     "postinstall": "postinstall-build lib"
   },
   "dependencies": {
