@@ -3,16 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "main": "lib/index.js",
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mktoho12/todo"
+  },
+  "author": "mk",
   "license": "ISC",
   "scripts": {
     "build": "babel src -d lib",
     "test": "babel-node src/test.js",
     "exec": "babel-node src/app.js"
   },
+  "dependencies": {
+    "postinstall-build": "^5.0.1"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.0",
     "babel-preset-env": "^1.6.1"
   }
 }
