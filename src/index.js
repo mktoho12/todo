@@ -45,7 +45,7 @@ export const done = task => {
  * 完了済のタスクの一覧の配列を取得する
  * @return {array}
  */
-export const doneList = () => Array.from(tasks).filter(isDone).map(e => e[0])
+export const donelist = () => Array.from(tasks).filter(isDone).map(e => e[0])
 
 /**
  * 項目を削除する
