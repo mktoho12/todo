@@ -12,7 +12,8 @@
   "scripts": {
     "build": "babel src -d lib",
     "test": "babel-node src/test.js",
-    "exec": "babel-node src/app.js"
+    "exec": "babel-node src/app.js",
+    "postinstall": "postinstall-build lib"
   },
   "dependencies": {
     "postinstall-build": "^5.0.1"
